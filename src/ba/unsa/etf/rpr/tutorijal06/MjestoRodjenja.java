@@ -3,10 +3,13 @@ package ba.unsa.etf.rpr.tutorijal06;
 import javafx.beans.property.SimpleStringProperty;
 
 public class MjestoRodjenja {
-    private SimpleStringProperty mjestoRodjenja;
+    private SimpleStringProperty mjestoRodjenja = new SimpleStringProperty("");
 
-    public MjestoRodjenja(SimpleStringProperty mjestoRodjenja) {
-        this.mjestoRodjenja = mjestoRodjenja;
+    public MjestoRodjenja(String mjestoRodjenja) {
+        this.mjestoRodjenja = new SimpleStringProperty (mjestoRodjenja);
+    }
+
+    public MjestoRodjenja() {
     }
 
     public String getMjestoRodjenja() {
@@ -19,5 +22,10 @@ public class MjestoRodjenja {
 
     public SimpleStringProperty mjestoRodjenjaProperty() {
         return mjestoRodjenja;
+    }
+
+    @Override
+    public String toString() {
+        return mjestoRodjenja.get();
     }
 }
