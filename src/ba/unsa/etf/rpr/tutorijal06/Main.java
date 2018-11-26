@@ -14,9 +14,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         MjestoRodjenjaModel modelMjestaRodjenja = new MjestoRodjenjaModel();
+        OdsjekModel modelOdsjeka = new OdsjekModel();
         modelMjestaRodjenja.dodajMjestaRodjenja();
+        modelOdsjeka.dodajOdsjeke();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("upis.fxml"));
-        loader.setController(new Controller(modelMjestaRodjenja));
+        loader.setController(new Controller(modelMjestaRodjenja, modelOdsjeka));
         Parent root = loader.load();
         root.getStylesheets().add(getClass().getResource("upis.css").toExternalForm());
         primaryStage.setTitle("Upis");

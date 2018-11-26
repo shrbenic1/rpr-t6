@@ -4,19 +4,23 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class Controller {
     private MjestoRodjenjaModel mjestoRodjenjaModel;
+    private OdsjekModel odsjekModel;
     public ComboBox<MjestoRodjenja> izborMjestaRodjenja;
+    public ChoiceBox<Odsjek> izborOdsjeka;
     public TextField ime;
     public TextField prezime;
     public TextField indeks;
     //private TextField jmbg;
 
-    public Controller(MjestoRodjenjaModel modelMjestaRodjenja) {
-        mjestoRodjenjaModel=modelMjestaRodjenja;
+    public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka) {
+        mjestoRodjenjaModel = modelMjestaRodjenja;
+        odsjekModel = modelOdsjeka;
     }
 
     private boolean validnoImePrezime(String n) {
@@ -41,6 +45,7 @@ public class Controller {
     @FXML
     public void initialize() {
         izborMjestaRodjenja.setItems(mjestoRodjenjaModel.getMjestaRodjenja());
+        izborOdsjeka.setItems(odsjekModel.getOdsjeci());
         ime.getStyleClass().add("poljeNijeIspravno");
         prezime.getStyleClass().add("poljeNijeIspravno");
         indeks.getStyleClass().add("poljeNijeIspravno");
@@ -89,6 +94,9 @@ public class Controller {
         mjestoRodjenjaModel.setTrenutnoMjestoRodjenja(izborMjestaRodjenja.getValue());
     }
 
+    public void promjenaOdsjeka(ActionEvent actionEvent) {
+        odsjekModel.setTrenutniOdsjek(izborOdsjeka.getValue());
+    }
 
 
 
