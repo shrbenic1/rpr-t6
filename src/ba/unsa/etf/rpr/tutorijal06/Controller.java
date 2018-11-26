@@ -52,7 +52,7 @@ public class Controller {
 
     private boolean validanIndeks(String n) {
         for(int i = 0; i < n.length(); i++) {
-            if(n.charAt(i) < '1' || n.charAt(i) > '9') {
+            if(n.charAt(i) < '0' || n.charAt(i) > '9') {
                 return false;
             }
         }
@@ -60,20 +60,25 @@ public class Controller {
     }
 
     private boolean validanJmbg(String n) {
-        if(n.length() < 13 || n.length() > 13) {
+        if(n.length() != 13) {
             return false;
         }
         for(int i = 0; i < n.length(); i++) {
-            if(n.charAt(i) < '1' || n.charAt(i) > '9') {
+            if(n.charAt(i) < '0' || n.charAt(i) > '9') {
                 return false;
             }
         }
-        return true;
+        //int L = 11 - (( 7*(getNumericValue(n.charAt(0))+getNumericValue(n.charAt(6))) + 6*(getNumericValue(n.charAt(1))+getNumericValue(n.charAt(7))) + 5*(getNumericValue(n.charAt(2))+getNumericValue(n.charAt(8))) + 4*(getNumericValue(n.charAt(3))+getNumericValue(n.charAt(9))) + 3*(getNumericValue(n.charAt(4))+getNumericValue(n.charAt(10))) + 2*(getNumericValue(n.charAt(5))+getNumericValue(n.charAt(11))) ) % 11);
+        int L = 11 - ((7 * (n.charAt(0) - '0' + n.charAt(6) - '0') + 6 * (n.charAt(1) - '0' + n.charAt(7) - '0') + 5 * (n.charAt(2) - '0' + n.charAt(8) - '0') + 4 * (n.charAt(3) - '0' + n.charAt(9) - '0') + 3 * (n.charAt(4) - '0' + n.charAt(10) - '0') + 2 * (n.charAt(5) - '0' + n.charAt(11) - '0'))%11);
+        if(L>9) {
+            L = 0;
+        }
+        return L == (n.charAt(12) - '0');
     }
 
     private  boolean validanKontaktTelefon(String n) {
         for(int i = 0; i < n.length(); i++) {
-            if(n.charAt(i) < '1' || n.charAt(i) > '9') {
+            if(n.charAt(i) < '0' || n.charAt(i) > '9') {
                 return false;
             }
         }
