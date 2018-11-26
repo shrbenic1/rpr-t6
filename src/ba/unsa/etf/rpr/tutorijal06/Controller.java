@@ -223,7 +223,7 @@ public class Controller {
 
     public void potvrdi(ActionEvent actionEvent) {
         EmailValidator validator = EmailValidator.getInstance();
-        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText())) {
+        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !izborMjestaRodjenja.getPromptText().isEmpty() && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
             potvrda.getStyleClass().removeAll("poljeNijeIspravno");
             potvrda.getStyleClass().add("poljeIspravno");
             System.out.println("Ime: " + ime.getCharacters().toString());
@@ -232,8 +232,12 @@ public class Controller {
             System.out.println("JBMG: " + jmbg.getCharacters().toString());
             //System.out.println("Datum rođenja: " + datum.getValue());
             System.out.println("Mjesto rođenja: " + izborMjestaRodjenja.getPromptText());
-            System.out.println("Kontakt adresa: " + kontaktAdresa.getCharacters().toString());
-            System.out.println("Kontakt telefon: " + kontaktTelefon.getCharacters().toString());
+            if(!kontaktAdresa.getCharacters().toString().isEmpty()) {
+                System.out.println("Kontakt adresa: " + kontaktAdresa.getCharacters().toString());
+            }
+            if(!kontaktTelefon.getCharacters().toString().isEmpty()) {
+                System.out.println("Kontakt telefon: " + kontaktTelefon.getCharacters().toString());
+            }
             System.out.println("E-mail adresa: " + email.getCharacters().toString());
             System.out.println("Odsjek: " + izborOdsjeka.getValue());
             System.out.println("Godina studija: " + izborGodineStudija.getValue());
