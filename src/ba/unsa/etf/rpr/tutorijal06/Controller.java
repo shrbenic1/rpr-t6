@@ -253,17 +253,4 @@ public class Controller {
         }
     }
 
-    public void promjenaKnjige(ActionEvent actionEvent) {
-        mjestoRodjenjaModel.setTrenutnoMjestoRodjenja(izborMjestaRodjenja.getValue());
-    }
-
-    public void promjenaOdsjeka(ActionEvent actionEvent) {
-        odsjekModel.setTrenutniOdsjek(izborOdsjeka.getValue());
-    }
-
-    public void promjenaGodineStudija(ActionEvent actionEvent) {
-        godinaStudijaModel.setTrenutnaGodina(izborGodineStudija.getValue());
-    }
-
-
 }
