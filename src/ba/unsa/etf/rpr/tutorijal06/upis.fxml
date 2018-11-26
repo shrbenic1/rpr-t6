@@ -98,7 +98,7 @@
             <Label text="Kontakt adresa:" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="137.0" text="Kontakt telefon:" GridPane.rowIndex="2" />
             <Label text="E-mail adresa:" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="kontaktAdresa" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField prefWidth="559.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>

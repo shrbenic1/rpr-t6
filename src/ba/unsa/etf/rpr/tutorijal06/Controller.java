@@ -22,7 +22,8 @@ public class Controller {
     public TextField ime;
     public TextField prezime;
     public TextField indeks;
-    //private TextField jmbg;
+    public TextField jmbg;
+    public TextField kontaktAdresa;
 
     public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa, StatusModel modelStatusa) {
         mjestoRodjenjaModel = modelMjestaRodjenja;
@@ -45,10 +46,18 @@ public class Controller {
     }
 
     private boolean validanIndeks(String n) {
-        for (int i = 0; i < n.length(); i++) {
+        for(int i = 0; i < n.length(); i++) {
             if(n.charAt(i) < '1' || n.charAt(i) > '9') return false;
         }
         return n.length() == 5;
+    }
+
+    private boolean validanJmbg(String n) {
+        if(n.length() < 13 || n.length() > 13) return false;
+        for(int i = 0; i < n.length(); i++) {
+            if(n.charAt(i) < '1' || n.charAt(i) > '9') return false;
+        }
+        return true;
     }
 
     @FXML
@@ -61,7 +70,8 @@ public class Controller {
         ime.getStyleClass().add("poljeNijeIspravno");
         prezime.getStyleClass().add("poljeNijeIspravno");
         indeks.getStyleClass().add("poljeNijeIspravno");
-        //jmbg.getStyleClass().add("poljeNijeIspravno");
+        jmbg.getStyleClass().add("poljeNijeIspravno");
+        kontaktAdresa.getStyleClass().add("poljeIspravno");
         ime.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
@@ -100,6 +110,33 @@ public class Controller {
                 }
             }
         });
+
+        indeks.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
+                if (validanIndeks(n)) {
+                    indeks.getStyleClass().removeAll("poljeNijeIspravno");
+                    indeks.getStyleClass().add("poljeIspravno");
+                } else {
+                    indeks.getStyleClass().removeAll("poljeIspravno");
+                    indeks.getStyleClass().add("poljeNijeIspravno");
+                }
+            }
+        });
+
+        jmbg.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
+                if (validanJmbg(n)) {
+                    jmbg.getStyleClass().removeAll("poljeNijeIspravno");
+                    jmbg.getStyleClass().add("poljeIspravno");
+                } else {
+                    jmbg.getStyleClass().removeAll("poljeIspravno");
+                    jmbg.getStyleClass().add("poljeNijeIspravno");
+                }
+            }
+        });
+
     }
 
     public void promjenaKnjige(ActionEvent actionEvent) {
