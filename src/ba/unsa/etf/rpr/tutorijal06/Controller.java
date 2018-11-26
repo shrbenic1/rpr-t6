@@ -216,7 +216,9 @@ public class Controller {
         }
     }
 
+    public void potvrdi(ActionEvent actionEvent) {
 
+    }
 
     public void promjenaKnjige(ActionEvent actionEvent) {
         mjestoRodjenjaModel.setTrenutnoMjestoRodjenja(izborMjestaRodjenja.getValue());
