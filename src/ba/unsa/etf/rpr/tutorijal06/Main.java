@@ -16,11 +16,13 @@ public class Main extends Application {
         MjestoRodjenjaModel modelMjestaRodjenja = new MjestoRodjenjaModel();
         OdsjekModel modelOdsjeka = new OdsjekModel();
         GodinaStudijaModel modelGodineStudija = new GodinaStudijaModel();
+        CiklusModel modelCiklusa = new CiklusModel();
         modelMjestaRodjenja.dodajMjestaRodjenja();
         modelOdsjeka.dodajOdsjeke();
         modelGodineStudija.dodajGodine();
+        modelCiklusa.dodajCikluse();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("upis.fxml"));
-        loader.setController(new Controller(modelMjestaRodjenja, modelOdsjeka, modelGodineStudija));
+        loader.setController(new Controller(modelMjestaRodjenja, modelOdsjeka, modelGodineStudija, modelCiklusa));
         Parent root = loader.load();
         root.getStylesheets().add(getClass().getResource("upis.css").toExternalForm());
         primaryStage.setTitle("Upis");

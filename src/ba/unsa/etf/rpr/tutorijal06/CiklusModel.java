@@ -25,10 +25,10 @@ public class CiklusModel {
         return trenutniCiklus;
     }
 
-    public void dodajOdsjeke() {
-        ciklusi.add(new Ciklus("AE"));
-        ciklusi.add(new Ciklus("RI"));
-        ciklusi.add(new Ciklus("EE"));
-        ciklusi.add(new Ciklus("TK"));
+    public void dodajCikluse() {
+        ciklusi.add(new Ciklus("Bachelor"));
+        ciklusi.add(new Ciklus("Master"));
+        ciklusi.add(new Ciklus("Doktorski studij"));
+        ciklusi.add(new Ciklus("Stručni studij"));
     }
 }
