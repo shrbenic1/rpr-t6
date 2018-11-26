@@ -29,6 +29,7 @@ public class Controller {
     public TextField kontaktTelefon;
     public TextField email;
     public DatePicker datum;
+    public Button potvrda;
     public CheckBox boracka;
 
     public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa, StatusModel modelStatusa) {
@@ -217,7 +218,32 @@ public class Controller {
     }
 
     public void potvrdi(ActionEvent actionEvent) {
-
+        EmailValidator validator = EmailValidator.getInstance();
+        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText())) {
+            potvrda.getStyleClass().removeAll("poljeNijeIspravno");
+            potvrda.getStyleClass().add("poljeIspravno");
+            System.out.println("Ime: " + ime.getCharacters().toString());
+            System.out.println("Prezime: " + prezime.getCharacters().toString());
+            System.out.println("Broj indeksa: " + indeks.getCharacters().toString());
+            System.out.println("JBMG: " + jmbg.getCharacters().toString());
+            System.out.println("Datum rođenja: " + datum.getValue());
+            System.out.println("Mjesto rođenja: " + izborMjestaRodjenja.getPromptText());
+            System.out.println("Kontakt adresa: " + kontaktAdresa.getCharacters().toString());
+            System.out.println("Kontakt telefon: " + kontaktTelefon.getCharacters().toString());
+            System.out.println("E-mail adresa: " + email.getCharacters().toString());
+            System.out.println("Odsjek: " + izborOdsjeka.getValue());
+            System.out.println("Godina studija: " + izborGodineStudija.getValue());
+            System.out.println("Ciklus studija: " + izborCiklusa.getValue());
+            System.out.println("Status: " + izborStatusa.getValue());
+            if(boracka.isSelected()) {
+                System.out.println("Pripada boračkim kategorijama");
+            } else {
+                System.out.println("Ne pripada boračkim kategorijama");
+            }
+        } else {
+            potvrda.getStyleClass().removeAll("poljeIspravno");
+            potvrda.getStyleClass().add("poljeNijeIspravno");
+        }
     }
 
     public void promjenaKnjige(ActionEvent actionEvent) {
