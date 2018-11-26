@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -27,6 +28,7 @@ public class Controller {
     public TextField kontaktAdresa;
     public TextField kontaktTelefon;
     public TextField email;
+    public CheckBox boracka;
 
     public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa, StatusModel modelStatusa) {
         mjestoRodjenjaModel = modelMjestaRodjenja;
@@ -183,6 +185,10 @@ public class Controller {
                 }
             }
         });
+
+    }
+
+    public void potvrdi(ActionEvent actionEvent) {
 
     }
 
