@@ -128,7 +128,7 @@
             <Label text="Godina studija:" GridPane.rowIndex="2" />
             <Label text="Ciklus studija:" GridPane.rowIndex="3" />
             <Label text="Status studenta:" GridPane.rowIndex="4" />
-            <ChoiceBox prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="izborGodineStudija" prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="izborOdsjeka" prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ChoiceBox prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <CheckBox mnemonicParsing="false" prefHeight="17.0" prefWidth="226.0" text="Pripadnost boračkim kategorijama" GridPane.columnSpan="2" GridPane.rowIndex="5" />

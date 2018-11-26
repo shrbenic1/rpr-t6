@@ -11,16 +11,19 @@ import javafx.scene.control.TextField;
 public class Controller {
     private MjestoRodjenjaModel mjestoRodjenjaModel;
     private OdsjekModel odsjekModel;
+    private GodinaStudijaModel godinaStudijaModel;
     public ComboBox<MjestoRodjenja> izborMjestaRodjenja;
     public ChoiceBox<Odsjek> izborOdsjeka;
+    public ChoiceBox<GodinaStudija> izborGodineStudija;
     public TextField ime;
     public TextField prezime;
     public TextField indeks;
     //private TextField jmbg;
 
-    public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka) {
+    public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija) {
         mjestoRodjenjaModel = modelMjestaRodjenja;
         odsjekModel = modelOdsjeka;
+        godinaStudijaModel = modelGodineStudija;
     }
 
     private boolean validnoImePrezime(String n) {
@@ -46,6 +49,7 @@ public class Controller {
     public void initialize() {
         izborMjestaRodjenja.setItems(mjestoRodjenjaModel.getMjestaRodjenja());
         izborOdsjeka.setItems(odsjekModel.getOdsjeci());
+        izborGodineStudija.setItems(godinaStudijaModel.getGodineStudija());
         ime.getStyleClass().add("poljeNijeIspravno");
         prezime.getStyleClass().add("poljeNijeIspravno");
         indeks.getStyleClass().add("poljeNijeIspravno");
@@ -98,6 +102,9 @@ public class Controller {
         odsjekModel.setTrenutniOdsjek(izborOdsjeka.getValue());
     }
 
+    public void promjenaGodineStudija(ActionEvent actionEvent) {
+        godinaStudijaModel.setTrenutnaGodina(izborGodineStudija.getValue());
+    }
 
 
 }

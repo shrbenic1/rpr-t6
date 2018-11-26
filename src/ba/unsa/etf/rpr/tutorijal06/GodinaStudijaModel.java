@@ -26,9 +26,8 @@ public class GodinaStudijaModel {
     }
 
     public void dodajGodine() {
-        godineStudija.add(new GodinaStudija("AE"));
-        godineStudija.add(new GodinaStudija"RI"));
-        godineStudija.add(new GodinaStudija("EE"));
-        godineStudija.add(new GodinaStudija("TK"));
+        godineStudija.add(new GodinaStudija("Prva"));
+        godineStudija.add(new GodinaStudija("Druga"));
+        godineStudija.add(new GodinaStudija("Treća"));
     }
 }

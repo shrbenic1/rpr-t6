@@ -15,10 +15,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         MjestoRodjenjaModel modelMjestaRodjenja = new MjestoRodjenjaModel();
         OdsjekModel modelOdsjeka = new OdsjekModel();
+        GodinaStudijaModel modelGodineStudija = new GodinaStudijaModel();
         modelMjestaRodjenja.dodajMjestaRodjenja();
         modelOdsjeka.dodajOdsjeke();
+        modelGodineStudija.dodajGodine();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("upis.fxml"));
-        loader.setController(new Controller(modelMjestaRodjenja, modelOdsjeka));
+        loader.setController(new Controller(modelMjestaRodjenja, modelOdsjeka, modelGodineStudija));
         Parent root = loader.load();
         root.getStylesheets().add(getClass().getResource("upis.css").toExternalForm());
         primaryStage.setTitle("Upis");
