@@ -25,7 +25,7 @@ public class StatusModel {
         return trenutniStatusi;
     }
 
-    public void dodajOdsjeke() {
+    public void dodajStatuse() {
         statusi.add(new Status("Redovan"));
         statusi.add(new Status("Samofinansirajući"));
     }

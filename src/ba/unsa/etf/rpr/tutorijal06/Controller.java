@@ -13,20 +13,23 @@ public class Controller {
     private OdsjekModel odsjekModel;
     private GodinaStudijaModel godinaStudijaModel;
     private CiklusModel ciklusModel;
+    private StatusModel statusModel;
     public ComboBox<MjestoRodjenja> izborMjestaRodjenja;
     public ChoiceBox<Odsjek> izborOdsjeka;
     public ChoiceBox<GodinaStudija> izborGodineStudija;
     public ChoiceBox<Ciklus> izborCiklusa;
+    public ChoiceBox<Status> izborStatusa;
     public TextField ime;
     public TextField prezime;
     public TextField indeks;
     //private TextField jmbg;
 
-    public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa) {
+    public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa, StatusModel modelStatusa) {
         mjestoRodjenjaModel = modelMjestaRodjenja;
         odsjekModel = modelOdsjeka;
         godinaStudijaModel = modelGodineStudija;
         ciklusModel = modelCiklusa;
+        statusModel = modelStatusa;
     }
 
     private boolean validnoImePrezime(String n) {
@@ -54,6 +57,7 @@ public class Controller {
         izborOdsjeka.setItems(odsjekModel.getOdsjeci());
         izborGodineStudija.setItems(godinaStudijaModel.getGodineStudija());
         izborCiklusa.setItems(ciklusModel.getCiklusi());
+        izborStatusa.setItems(statusModel.getStatusi());
         ime.getStyleClass().add("poljeNijeIspravno");
         prezime.getStyleClass().add("poljeNijeIspravno");
         indeks.getStyleClass().add("poljeNijeIspravno");
