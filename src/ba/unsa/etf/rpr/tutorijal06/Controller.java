@@ -179,7 +179,8 @@ public class Controller {
                 }
             }
         });
-
+        datum.getStyleClass().removeAll("poljeIspravno");
+        datum.getStyleClass().add("poljeNijeIspravno");
     }
 
     public void date(ActionEvent actionEvent) {
@@ -195,6 +196,9 @@ public class Controller {
 
     private boolean validnostDatuma(LocalDate datum1) {
         Date date = new Date();
+        if(jmbg.getCharacters().toString().isEmpty()) {
+            return false;
+        }
         if(date.getYear() < datum1.getYear() && date.getMonth() < datum1.getMonth().getValue() && date.getDay() < datum1.getDayOfYear()) {
             return false;
         } else {
@@ -226,7 +230,7 @@ public class Controller {
             System.out.println("Prezime: " + prezime.getCharacters().toString());
             System.out.println("Broj indeksa: " + indeks.getCharacters().toString());
             System.out.println("JBMG: " + jmbg.getCharacters().toString());
-            System.out.println("Datum rođenja: " + datum.getValue());
+            //System.out.println("Datum rođenja: " + datum.getValue());
             System.out.println("Mjesto rođenja: " + izborMjestaRodjenja.getPromptText());
             System.out.println("Kontakt adresa: " + kontaktAdresa.getCharacters().toString());
             System.out.println("Kontakt telefon: " + kontaktTelefon.getCharacters().toString());
@@ -241,8 +245,7 @@ public class Controller {
                 System.out.println("Ne pripada boračkim kategorijama");
             }
         } else {
-            potvrda.getStyleClass().removeAll("poljeIspravno");
-            potvrda.getStyleClass().add("poljeNijeIspravno");
+
         }
     }
 
