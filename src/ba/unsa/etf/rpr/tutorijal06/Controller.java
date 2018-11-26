@@ -4,11 +4,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.apache.commons.validator.EmailValidator;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Controller {
     private MjestoRodjenjaModel mjestoRodjenjaModel;
@@ -28,6 +28,7 @@ public class Controller {
     public TextField kontaktAdresa;
     public TextField kontaktTelefon;
     public TextField email;
+    public DatePicker datum;
     public CheckBox boracka;
 
     public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa, StatusModel modelStatusa) {
@@ -138,19 +139,6 @@ public class Controller {
             }
         });
 
-        indeks.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
-                if (validanIndeks(n)) {
-                    indeks.getStyleClass().removeAll("poljeNijeIspravno");
-                    indeks.getStyleClass().add("poljeIspravno");
-                } else {
-                    indeks.getStyleClass().removeAll("poljeIspravno");
-                    indeks.getStyleClass().add("poljeNijeIspravno");
-                }
-            }
-        });
-
         jmbg.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
@@ -193,9 +181,42 @@ public class Controller {
 
     }
 
-    public void potvrdi(ActionEvent actionEvent) {
-
+    public void date(ActionEvent actionEvent) {
+        LocalDate datum1 = datum.getValue();
+        if(validnostDatuma(datum1)) {
+            datum.getStyleClass().removeAll("poljeNijeIspravno");
+            datum.getStyleClass().add("poljeIspravno");
+        } else {
+            datum.getStyleClass().removeAll("poljeIspravno");
+            datum.getStyleClass().add("poljeNijeIspravno");
+        }
     }
+
+    private boolean validnostDatuma(LocalDate datum1) {
+        Date date = new Date();
+        if(date.getYear() < datum1.getYear() && date.getMonth() < datum1.getMonth().getValue() && date.getDay() < datum1.getDayOfYear()) {
+            return false;
+        } else {
+            if(Integer.parseInt(jmbg.getCharacters().toString().substring(4, 7)) < 900) {
+                if(datum1.getYear() != Integer.parseInt("2" + jmbg.getCharacters().toString().substring(4, 7))) {
+                    return false;
+                }
+            } else {
+                if(datum1.getYear() != Integer.parseInt("1"+ jmbg.getCharacters().toString().substring(4, 7))) {
+                    return false;
+                }
+            }
+            if(datum1.getMonth().getValue() != Integer.parseInt(jmbg.getCharacters().toString().substring(2, 4).replace("0", ""))) {
+                return false;
+            } else if(datum1.getDayOfYear() != Integer.parseInt(jmbg.getCharacters().toString().substring(0, 2).replace("0", ""))) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+
 
     public void promjenaKnjige(ActionEvent actionEvent) {
         mjestoRodjenjaModel.setTrenutnoMjestoRodjenja(izborMjestaRodjenja.getValue());

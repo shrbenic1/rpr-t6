@@ -46,7 +46,7 @@
             <Label text="Mjesto rođenja:" GridPane.rowIndex="3" />
             <TextField fx:id="jmbg" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="izborMjestaRodjenja" editable="true" prefHeight="25.0" prefWidth="277.0" promptText="Sarajevo" visibleRowCount="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="datum" onAction="#date" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
