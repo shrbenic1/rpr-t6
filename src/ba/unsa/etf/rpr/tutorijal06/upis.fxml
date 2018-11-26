@@ -44,7 +44,7 @@
             <Label text="JMBG:" GridPane.rowIndex="1" />
             <Label text="Datum rođenja:" GridPane.rowIndex="2" />
             <Label text="Mjesto rođenja:" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id = "jmbg" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox fx:id="izborMjestaRodjenja" editable="true" prefHeight="25.0" prefWidth="277.0" promptText="Sarajevo" visibleRowCount="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <DatePicker prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
@@ -71,9 +71,9 @@
             <Label text="Ime:" GridPane.rowIndex="1" />
             <Label text="Prezime:" GridPane.rowIndex="2" />
             <Label text="Broj indeksa:" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id = "ime" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id = "prezime" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id = "indeks" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
