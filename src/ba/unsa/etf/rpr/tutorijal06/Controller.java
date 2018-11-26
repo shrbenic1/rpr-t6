@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.apache.commons.validator.EmailValidator;
 
 public class Controller {
     private MjestoRodjenjaModel mjestoRodjenjaModel;
@@ -24,6 +25,8 @@ public class Controller {
     public TextField indeks;
     public TextField jmbg;
     public TextField kontaktAdresa;
+    public TextField kontaktTelefon;
+    public TextField email;
 
     public Controller(MjestoRodjenjaModel modelMjestaRodjenja, OdsjekModel modelOdsjeka, GodinaStudijaModel modelGodineStudija, CiklusModel modelCiklusa, StatusModel modelStatusa) {
         mjestoRodjenjaModel = modelMjestaRodjenja;
@@ -47,15 +50,30 @@ public class Controller {
 
     private boolean validanIndeks(String n) {
         for(int i = 0; i < n.length(); i++) {
-            if(n.charAt(i) < '1' || n.charAt(i) > '9') return false;
+            if(n.charAt(i) < '1' || n.charAt(i) > '9') {
+                return false;
+            }
         }
         return n.length() == 5;
     }
 
     private boolean validanJmbg(String n) {
-        if(n.length() < 13 || n.length() > 13) return false;
+        if(n.length() < 13 || n.length() > 13) {
+            return false;
+        }
         for(int i = 0; i < n.length(); i++) {
-            if(n.charAt(i) < '1' || n.charAt(i) > '9') return false;
+            if(n.charAt(i) < '1' || n.charAt(i) > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private  boolean validanKontaktTelefon(String n) {
+        for(int i = 0; i < n.length(); i++) {
+            if(n.charAt(i) < '1' || n.charAt(i) > '9') {
+                return false;
+            }
         }
         return true;
     }
@@ -72,6 +90,8 @@ public class Controller {
         indeks.getStyleClass().add("poljeNijeIspravno");
         jmbg.getStyleClass().add("poljeNijeIspravno");
         kontaktAdresa.getStyleClass().add("poljeIspravno");
+        kontaktTelefon.getStyleClass().add("poljeIspravno");
+        email.getStyleClass().add("poljeNijeIspravno");
         ime.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
@@ -133,6 +153,33 @@ public class Controller {
                 } else {
                     jmbg.getStyleClass().removeAll("poljeIspravno");
                     jmbg.getStyleClass().add("poljeNijeIspravno");
+                }
+            }
+        });
+
+        kontaktTelefon.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
+                if (validanKontaktTelefon(n)) {
+                    kontaktTelefon.getStyleClass().removeAll("poljeNijeIspravno");
+                    kontaktTelefon.getStyleClass().add("poljeIspravno");
+                } else {
+                    kontaktTelefon.getStyleClass().removeAll("poljeIspravno");
+                    kontaktTelefon.getStyleClass().add("poljeNijeIspravno");
+                }
+            }
+        });
+
+        email.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> obs, String o, String n) {
+                EmailValidator validator = EmailValidator.getInstance();
+                if (validator.isValid(n)) {
+                    email.getStyleClass().removeAll("poljeNijeIspravno");
+                    email.getStyleClass().add("poljeIspravno");
+                } else {
+                    email.getStyleClass().removeAll("poljeIspravno");
+                    email.getStyleClass().add("poljeNijeIspravno");
                 }
             }
         });
