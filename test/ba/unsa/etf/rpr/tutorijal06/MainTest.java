@@ -227,6 +227,5 @@ class MainTest {
         ime = robot.lookup("#ime").queryAs(TextField.class);
         robot.clickOn(ime);
         assertEquals("choice-box", status.getStyleClass().toString());
-        assertEquals(",", status);
     }
 }
