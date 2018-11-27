@@ -347,8 +347,6 @@ public class Controller {
             }
         });
 
-
-
         kontaktTelefon.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
@@ -375,9 +373,39 @@ public class Controller {
                 }
             }
         });
+
+        izborOdsjeka.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !(izborOdsjeka.getValue() != null)) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Ispravno unesite vašu e-mail adresu!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return izborOdsjeka;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(izborOdsjeka);
+                }
+            }
+        });
+
         datum.getStyleClass().removeAll("poljeIspravno");
         datum.getStyleClass().add("poljeNijeIspravno");
     }
+
+
 
     public void date(ActionEvent actionEvent) {
         LocalDate datum1 = datum.getValue();
@@ -419,7 +447,7 @@ public class Controller {
 
     public void potvrdi(ActionEvent actionEvent) {
         EmailValidator validator = EmailValidator.getInstance();
-        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !izborMjestaRodjenja.getPromptText().isEmpty() && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
+        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !(izborMjestaRodjenja.getValue() == null) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
             potvrda.getStyleClass().removeAll("poljeNijeIspravno");
             potvrda.getStyleClass().add("poljeIspravno");
             System.out.println("Ime: " + ime.getCharacters().toString());
