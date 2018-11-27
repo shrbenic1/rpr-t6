@@ -6,6 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.apache.commons.validator.EmailValidator;
+import org.controlsfx.validation.Severity;
+import org.controlsfx.validation.ValidationMessage;
+import org.controlsfx.validation.decoration.GraphicValidationDecoration;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -114,6 +117,34 @@ public class Controller {
             }
         });
 
+        ime.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !validnoImePrezime(ime.getCharacters().toString())) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Rubrika ne smije biti prazna, smije sadržavati samo slova, maksimalno 20!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return ime;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(ime);
+                }
+            }
+        });
+
+
         prezime.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
@@ -123,6 +154,33 @@ public class Controller {
                 } else {
                     prezime.getStyleClass().removeAll("poljeIspravno");
                     prezime.getStyleClass().add("poljeNijeIspravno");
+                }
+            }
+        });
+
+        prezime.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !validnoImePrezime(prezime.getCharacters().toString())) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Rubrika ne smije biti prazna, smije sadržavati samo slova, maksimalno 20!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return prezime;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(prezime);
                 }
             }
         });
