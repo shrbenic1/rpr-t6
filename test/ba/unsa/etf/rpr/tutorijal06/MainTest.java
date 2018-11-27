@@ -71,5 +71,11 @@ class MainTest {
         assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", prezime.getStyleClass().toString());
     }
 
-
+    @Test
+    public void neispravanUnosImena1(FxRobot robot) {
+        ime = robot.lookup("#ime").queryAs(TextField.class);
+        robot.clickOn(ime);
+        robot.write("AaAaAaAaAaAaAaAaAaAaA");
+        assertEquals("text-input text-field poljeNijeIspravno", ime.getStyleClass().toString());
+    }
 }
