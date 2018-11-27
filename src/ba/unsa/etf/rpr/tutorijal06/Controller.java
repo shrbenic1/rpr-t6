@@ -20,6 +20,7 @@ public class Controller {
     private GodinaStudijaModel godinaStudijaModel;
     private CiklusModel ciklusModel;
     private StatusModel statusModel;
+    private String slova = new String("žčćđšŽĆČŠĐ");
     public ComboBox<MjestoRodjenja> izborMjestaRodjenja;
     public ChoiceBox<Odsjek> izborOdsjeka;
     public ChoiceBox<GodinaStudija> izborGodineStudija;
@@ -49,7 +50,7 @@ public class Controller {
             return false;
         }
         for (int i = 0; i < n.length(); i++) {
-            if (n.charAt(i) < 'A' || n.charAt(i) > 'Ž' && n.charAt(i) < 'a' || n.charAt(i) > 'ž') {
+            if (n.charAt(i) < 'A' || n.charAt(i) > 'Z' && n.charAt(i) < 'a' || n.charAt(i) > 'z' || slova.contains(String.valueOf(n.charAt(i)))) {
                 return false;
             }
         }
