@@ -16,6 +16,9 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
+import java.awt.*;
+import java.security.Key;
+
 @ExtendWith(ApplicationExtension.class)
 class MainTest {
 
@@ -26,6 +29,8 @@ class MainTest {
     private TextField kontaktTelefon;
     private TextField email;
     private ChoiceBox odsjek;
+    private ChoiceBox godina;
+    private ChoiceBox ciklus;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -174,5 +179,34 @@ class MainTest {
         robot.type(KeyCode.ENTER);
         assertEquals("RI", odsjek.getValue().toString());
         assertEquals("choice-box", odsjek.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravnaGodina(FxRobot robot) {
+        godina = robot.lookup("#izborGodineStudija").queryAs(ChoiceBox.class);
+        robot.clickOn(godina);
+        robot.type(KeyCode.ENTER);
+        assertEquals("Prva", godina.getValue().toString());
+        assertEquals("choice-box", godina.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravnaGodina1(FxRobot robot) {
+        godina = robot.lookup("#izborGodineStudija").queryAs(ChoiceBox.class);
+        robot.clickOn(godina);
+        robot.type(KeyCode.DOWN);
+        robot.type(KeyCode.DOWN);
+        robot.type(KeyCode.ENTER);
+        assertEquals("Treća", godina.getValue().toString());
+        assertEquals("choice-box", godina.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanCiklus(FxRobot robot) {
+        ciklus = robot.lookup("#izborCiklusa").queryAs(ChoiceBox.class);
+        robot.clickOn(ciklus);
+        robot.type(KeyCode.ENTER);
+        assertEquals("Bachelor", ciklus.getValue().toString());
+        assertEquals("choice-box", ciklus.getStyleClass().toString());
     }
 }
