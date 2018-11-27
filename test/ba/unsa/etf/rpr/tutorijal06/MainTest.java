@@ -19,6 +19,7 @@ class MainTest {
     private TextField ime;
     private TextField prezime;
     private TextField indeks;
+    private TextField jmbg;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -46,7 +47,7 @@ class MainTest {
         robot.clickOn(ime);
         robot.write("Sven");
         assertEquals("Sven", ime.getText());
-        assertEquals("text-input text-field poljeIspravno poljeIspravno poljeIspravno poljeIspravno", ime.getStyleClass().toString());
+        assertEquals("text-input text-field poljeIspravno", ime.getStyleClass().toString());
     }
 
     @Test
@@ -54,7 +55,7 @@ class MainTest {
         ime = robot.lookup("#ime").queryAs(TextField.class);
         robot.clickOn(ime);
         robot.write("96");
-        assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", ime.getStyleClass().toString());
+        assertEquals("text-input text-field poljeNijeIspravno", ime.getStyleClass().toString());
     }
 
     @Test
@@ -63,7 +64,7 @@ class MainTest {
         robot.clickOn(prezime);
         robot.write("Hrbenić");
         assertEquals("Hrbenić", prezime.getText());
-        assertEquals("text-input text-field poljeIspravno poljeIspravno poljeIspravno poljeIspravno poljeIspravno poljeIspravno poljeIspravno", prezime.getStyleClass().toString());
+        assertEquals("text-input text-field poljeIspravno", prezime.getStyleClass().toString());
     }
 
     @Test
@@ -71,7 +72,7 @@ class MainTest {
         prezime = robot.lookup("#prezime").queryAs(TextField.class);
         robot.clickOn(prezime);
         robot.write("96");
-        assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", prezime.getStyleClass().toString());
+        assertEquals("text-input text-field poljeNijeIspravno", prezime.getStyleClass().toString());
     }
 
     @Test
@@ -96,6 +97,15 @@ class MainTest {
         indeks = robot.lookup("#indeks").queryAs(TextField.class);
         robot.clickOn(indeks);
         robot.write("1790");
-        assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", indeks.getStyleClass().toString());;
+        assertEquals("text-input text-field poljeNijeIspravno", indeks.getStyleClass().toString());;
+    }
+
+    @Test
+    public void ispravanUnosJmbga(FxRobot robot) {
+        jmbg = robot.lookup("#jmbg").queryAs(TextField.class);
+        robot.clickOn(jmbg);
+        robot.write("0601998172652");
+        assertEquals("0601998172652", jmbg.getText());
+        assertEquals("text-input text-field poljeIspravno", jmbg.getStyleClass().toString());
     }
 }

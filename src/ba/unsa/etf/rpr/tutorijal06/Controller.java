@@ -74,7 +74,6 @@ public class Controller {
                 return false;
             }
         }
-        //int L = 11 - (( 7*(getNumericValue(n.charAt(0))+getNumericValue(n.charAt(6))) + 6*(getNumericValue(n.charAt(1))+getNumericValue(n.charAt(7))) + 5*(getNumericValue(n.charAt(2))+getNumericValue(n.charAt(8))) + 4*(getNumericValue(n.charAt(3))+getNumericValue(n.charAt(9))) + 3*(getNumericValue(n.charAt(4))+getNumericValue(n.charAt(10))) + 2*(getNumericValue(n.charAt(5))+getNumericValue(n.charAt(11))) ) % 11);
         int L = 11 - ((7 * (n.charAt(0) - '0' + n.charAt(6) - '0') + 6 * (n.charAt(1) - '0' + n.charAt(7) - '0') + 5 * (n.charAt(2) - '0' + n.charAt(8) - '0') + 4 * (n.charAt(3) - '0' + n.charAt(9) - '0') + 3 * (n.charAt(4) - '0' + n.charAt(10) - '0') + 2 * (n.charAt(5) - '0' + n.charAt(11) - '0')) % 11);
         if (L > 9) {
             L = 0;
@@ -109,10 +108,10 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (validnoImePrezime(n)) {
-                    ime.getStyleClass().removeAll("poljeNijeIspravno");
+                    ime.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     ime.getStyleClass().add("poljeIspravno");
                 } else {
-                    ime.getStyleClass().removeAll("poljeIspravno");
+                    ime.getStyleClass().removeAll("poljeIspravno", "poljeNijeIspravno");
                     ime.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -150,10 +149,10 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (validnoImePrezime(n)) {
-                    prezime.getStyleClass().removeAll("poljeNijeIspravno");
+                    prezime.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     prezime.getStyleClass().add("poljeIspravno");
                 } else {
-                    prezime.getStyleClass().removeAll("poljeIspravno");
+                    prezime.getStyleClass().removeAll("poljeIspravno", "poljeNijeIspravno");
                     prezime.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -190,10 +189,10 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (validanIndeks(n)) {
-                    indeks.getStyleClass().removeAll("poljeNijeIspravno");
+                    indeks.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     indeks.getStyleClass().add("poljeIspravno");
                 } else {
-                    indeks.getStyleClass().removeAll("poljeIspravno");
+                    indeks.getStyleClass().removeAll("poljeIspravno" , "poljeNijeIspravno");
                     indeks.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -230,10 +229,10 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (validanJmbg(n)) {
-                    jmbg.getStyleClass().removeAll("poljeNijeIspravno");
+                    jmbg.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     jmbg.getStyleClass().add("poljeIspravno");
                 } else {
-                    jmbg.getStyleClass().removeAll("poljeIspravno");
+                    jmbg.getStyleClass().removeAll("poljeIspravno", "poljeNijeIspravno");
                     jmbg.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -352,10 +351,10 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
                 if (validanKontaktTelefon(n)) {
-                    kontaktTelefon.getStyleClass().removeAll("poljeNijeIspravno");
+                    kontaktTelefon.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     kontaktTelefon.getStyleClass().add("poljeIspravno");
                 } else {
-                    kontaktTelefon.getStyleClass().removeAll("poljeIspravno");
+                    kontaktTelefon.getStyleClass().removeAll("poljeIspravno" , "poljeNijeIspravno");
                     kontaktTelefon.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -366,10 +365,10 @@ public class Controller {
             public void changed(ObservableValue<? extends String> obs, String o, String n) {
                 EmailValidator validator = EmailValidator.getInstance();
                 if (validator.isValid(n)) {
-                    email.getStyleClass().removeAll("poljeNijeIspravno");
+                    email.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     email.getStyleClass().add("poljeIspravno");
                 } else {
-                    email.getStyleClass().removeAll("poljeIspravno");
+                    email.getStyleClass().removeAll("poljeIspravno" , "poljeNijeIspravno");
                     email.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -559,7 +558,6 @@ public class Controller {
             alert.setResizable(false);
             alert.setContentText("Unesite potrebne podatke!");
             Optional<ButtonType> result = alert.showAndWait();
-            //ButtonType button = result.orElse(ButtonType.OK);
         }
     }
 
