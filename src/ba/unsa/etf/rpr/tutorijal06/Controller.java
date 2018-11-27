@@ -273,7 +273,7 @@ public class Controller {
                     graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
                         @Override
                         public String getText() {
-                            return "Rubrika ne smije biti prazna, smije sadržavati samo slova, maksimalno 20!";
+                            return "Odaberite datum u skladu s vašim JMBG-om!";
                         }
 
                         @Override
@@ -291,6 +291,63 @@ public class Controller {
                 }
             }
         });
+
+        kontaktTelefon.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !validanKontaktTelefon(kontaktTelefon.getCharacters().toString())) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Broj telefona mora sadržiti iskljčivo cifre u sebi!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return kontaktTelefon;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(kontaktTelefon);
+                }
+            }
+        });
+
+        email.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                EmailValidator validator = EmailValidator.getInstance();
+                if (!n && !validator.isValid(email.getText())) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Ispravno unesite vašu e-mail adresu!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return email;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(email);
+                }
+            }
+        });
+
+
 
         kontaktTelefon.textProperty().addListener(new ChangeListener<String>() {
             @Override
