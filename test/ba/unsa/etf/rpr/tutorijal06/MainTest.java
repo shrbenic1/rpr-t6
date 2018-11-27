@@ -31,6 +31,7 @@ class MainTest {
     private ChoiceBox odsjek;
     private ChoiceBox godina;
     private ChoiceBox ciklus;
+    private ChoiceBox status;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -208,5 +209,14 @@ class MainTest {
         robot.type(KeyCode.ENTER);
         assertEquals("Bachelor", ciklus.getValue().toString());
         assertEquals("choice-box", ciklus.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanStatus(FxRobot robot) {
+        status = robot.lookup("#izborStatusa").queryAs(ChoiceBox.class);
+        robot.clickOn(status);
+        robot.type(KeyCode.ENTER);
+        assertEquals("Redovan", status.getValue().toString());
+        assertEquals("choice-box", status.getStyleClass().toString());
     }
 }
