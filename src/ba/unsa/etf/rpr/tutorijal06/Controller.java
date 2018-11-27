@@ -527,6 +527,7 @@ public class Controller {
     }
 
     private boolean validnostDatuma(LocalDate datum1) {
+        LocalDate localDate = datum1;
         Date date = new Date();
         if (jmbg.getCharacters().toString().isEmpty()) {
             return false;

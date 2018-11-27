@@ -250,14 +250,8 @@ class MainTest {
         robot.write("0601998172652");
         datum = robot.lookup("#datum").queryAs(DatePicker.class);
         robot.clickOn(datum);
-        robot.clickOn(1100, 353);
-        for (int i = 0; i < 20; i++) {
-            robot.clickOn(1100, 380);
-        }
-        for (int i = 0; i < 10; i++) {
-            robot.clickOn(940, 380);
-        }
-        robot.clickOn(1000, 460);
+        robot.write("1/6/1998");
+        robot.type(KeyCode.ENTER);
         assertEquals("1998-01-06", datum.getValue().toString());
     }
 
@@ -268,14 +262,8 @@ class MainTest {
         robot.write("0601998172652");
         datum = robot.lookup("#datum").queryAs(DatePicker.class);
         robot.clickOn(datum);
-        robot.clickOn(1100, 353);
-        for (int i = 0; i < 10; i++) {
-            robot.clickOn(1100, 380);
-        }
-        for (int i = 0; i < 10; i++) {
-            robot.clickOn(940, 380);
-        }
-        robot.clickOn(1000, 500);
+        robot.write("1/22/2008");
+        robot.type(KeyCode.ENTER);
         assertEquals("2008-01-22", datum.getValue().toString());
     }
 
@@ -299,14 +287,8 @@ class MainTest {
         robot.write("0601998172652");
         datum = robot.lookup("#datum").queryAs(DatePicker.class);
         robot.clickOn(datum);
-        robot.clickOn(1100, 353);
-        for (int i = 0; i < 20; i++) {
-            robot.clickOn(1100, 380);
-        }
-        for (int i = 0; i < 10; i++) {
-            robot.clickOn(940, 380);
-        }
-        robot.clickOn(1000, 460);
+        robot.write("1/6/1998");
+        robot.type(KeyCode.ENTER);
         mjesto = robot.lookup("#izborMjestaRodjenja").queryAs(ComboBox.class);
         robot.clickOn(mjesto);
         mjesto.setValue("Zagreb");
