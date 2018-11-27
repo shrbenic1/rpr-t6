@@ -242,7 +242,7 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
                 GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
-                if (!n && !validnoImePrezime(jmbg.getCharacters().toString())) {
+                if (!n && !validanJmbg(jmbg.getCharacters().toString())) {
                     graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
                         @Override
                         public String getText() {
@@ -261,6 +261,33 @@ public class Controller {
                     });
                 } else {
                     graphicValidationDecoration.removeDecorations(jmbg);
+                }
+            }
+        });
+
+        datum.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !validnostDatuma(datum.getValue())) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Rubrika ne smije biti prazna, smije sadržavati samo slova, maksimalno 20!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return datum;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(datum);
                 }
             }
         });
