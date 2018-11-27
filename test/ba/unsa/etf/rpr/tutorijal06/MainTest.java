@@ -46,4 +46,11 @@ class MainTest {
         assertEquals("Sven", ime.getText());
     }
 
+    @Test
+    public void neispravanUnosImena(FxRobot robot) {
+        ime = robot.lookup("#ime").queryAs(TextField.class);
+        robot.clickOn(ime);
+        robot.write("96");
+        assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", ime.getStyleClass().toString());
+    }
 }
