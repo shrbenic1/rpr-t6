@@ -1,11 +1,13 @@
 package ba.unsa.etf.rpr.tutorijal06;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -24,6 +26,7 @@ import java.io.PrintStream;
 import java.security.Key;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 @ExtendWith(ApplicationExtension.class)
 class MainTest {
@@ -110,7 +113,8 @@ class MainTest {
         robot.clickOn(indeks);
         robot.write("17901");
         assertEquals("17901", indeks.getText());
-        assertEquals("text-input text-field poljeIspravno", indeks.getStyleClass().toString());;
+        assertEquals("text-input text-field poljeIspravno", indeks.getStyleClass().toString());
+        ;
     }
 
     @Test
@@ -118,7 +122,8 @@ class MainTest {
         indeks = robot.lookup("#indeks").queryAs(TextField.class);
         robot.clickOn(indeks);
         robot.write("1790");
-        assertEquals("text-input text-field poljeNijeIspravno", indeks.getStyleClass().toString());;
+        assertEquals("text-input text-field poljeNijeIspravno", indeks.getStyleClass().toString());
+        ;
     }
 
     @Test
@@ -245,11 +250,11 @@ class MainTest {
         robot.write("0601998172652");
         datum = robot.lookup("#datum").queryAs(DatePicker.class);
         robot.clickOn(datum);
-        robot.clickOn(1100,353);
-        for(int i = 0; i < 20; i++) {
+        robot.clickOn(1100, 353);
+        for (int i = 0; i < 20; i++) {
             robot.clickOn(1100, 380);
         }
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             robot.clickOn(940, 380);
         }
         robot.clickOn(1000, 460);
@@ -263,11 +268,11 @@ class MainTest {
         robot.write("0601998172652");
         datum = robot.lookup("#datum").queryAs(DatePicker.class);
         robot.clickOn(datum);
-        robot.clickOn(1100,353);
-        for(int i = 0; i < 10; i++) {
+        robot.clickOn(1100, 353);
+        for (int i = 0; i < 10; i++) {
             robot.clickOn(1100, 380);
         }
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             robot.clickOn(940, 380);
         }
         robot.clickOn(1000, 500);
@@ -294,11 +299,11 @@ class MainTest {
         robot.write("0601998172652");
         datum = robot.lookup("#datum").queryAs(DatePicker.class);
         robot.clickOn(datum);
-        robot.clickOn(1100,353);
-        for(int i = 0; i < 20; i++) {
+        robot.clickOn(1100, 353);
+        for (int i = 0; i < 20; i++) {
             robot.clickOn(1100, 380);
         }
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             robot.clickOn(940, 380);
         }
         robot.clickOn(1000, 460);

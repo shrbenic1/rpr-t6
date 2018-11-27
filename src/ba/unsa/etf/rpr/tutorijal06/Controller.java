@@ -192,7 +192,7 @@ public class Controller {
                     indeks.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     indeks.getStyleClass().add("poljeIspravno");
                 } else {
-                    indeks.getStyleClass().removeAll("poljeIspravno" , "poljeNijeIspravno");
+                    indeks.getStyleClass().removeAll("poljeIspravno", "poljeNijeIspravno");
                     indeks.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -354,7 +354,7 @@ public class Controller {
                     kontaktTelefon.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     kontaktTelefon.getStyleClass().add("poljeIspravno");
                 } else {
-                    kontaktTelefon.getStyleClass().removeAll("poljeIspravno" , "poljeNijeIspravno");
+                    kontaktTelefon.getStyleClass().removeAll("poljeIspravno", "poljeNijeIspravno");
                     kontaktTelefon.getStyleClass().add("poljeNijeIspravno");
                 }
             }
@@ -368,7 +368,7 @@ public class Controller {
                     email.getStyleClass().removeAll("poljeNijeIspravno", "poljeIspravno");
                     email.getStyleClass().add("poljeIspravno");
                 } else {
-                    email.getStyleClass().removeAll("poljeIspravno" , "poljeNijeIspravno");
+                    email.getStyleClass().removeAll("poljeIspravno", "poljeNijeIspravno");
                     email.getStyleClass().add("poljeNijeIspravno");
                 }
             }
