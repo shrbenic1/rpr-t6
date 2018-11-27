@@ -17,6 +17,7 @@ import org.testfx.framework.junit5.Start;
 class MainTest {
 
     private TextField ime;
+    private TextField prezime;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -53,4 +54,22 @@ class MainTest {
         robot.write("96");
         assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", ime.getStyleClass().toString());
     }
+
+    @Test
+    public void ispravanUnosPrezimena(FxRobot robot) {
+        prezime = robot.lookup("#prezime").queryAs(TextField.class);
+        robot.clickOn(prezime);
+        robot.write("Hrbenić");
+        assertEquals("Hrbenić", prezime.getText());
+    }
+
+    @Test
+    public void neispravanUnosPrezimena(FxRobot robot) {
+        prezime = robot.lookup("#prezime").queryAs(TextField.class);
+        robot.clickOn(prezime);
+        robot.write("96");
+        assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", prezime.getStyleClass().toString());
+    }
+
+
 }
