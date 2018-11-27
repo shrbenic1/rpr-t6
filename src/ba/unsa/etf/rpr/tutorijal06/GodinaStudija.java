@@ -6,7 +6,7 @@ public class GodinaStudija {
     private SimpleStringProperty godinaStudija = new SimpleStringProperty("");
 
     public GodinaStudija(String godinaStudija) {
-        this.godinaStudija = new SimpleStringProperty (godinaStudija);
+        this.godinaStudija = new SimpleStringProperty(godinaStudija);
     }
 
     public GodinaStudija() {

@@ -6,7 +6,7 @@ public class Odsjek {
     private SimpleStringProperty odsjek = new SimpleStringProperty("");
 
     public Odsjek(String odsjek) {
-        this.odsjek = new SimpleStringProperty (odsjek);
+        this.odsjek = new SimpleStringProperty(odsjek);
     }
 
     public Odsjek() {

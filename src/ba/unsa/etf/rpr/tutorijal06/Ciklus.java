@@ -6,7 +6,7 @@ public class Ciklus {
     private SimpleStringProperty ciklus = new SimpleStringProperty("");
 
     public Ciklus(String ciklus) {
-        this.ciklus = new SimpleStringProperty (ciklus);
+        this.ciklus = new SimpleStringProperty(ciklus);
     }
 
     public Ciklus() {

@@ -6,7 +6,7 @@ public class MjestoRodjenja {
     private SimpleStringProperty mjestoRodjenja = new SimpleStringProperty("");
 
     public MjestoRodjenja(String mjestoRodjenja) {
-        this.mjestoRodjenja = new SimpleStringProperty (mjestoRodjenja);
+        this.mjestoRodjenja = new SimpleStringProperty(mjestoRodjenja);
     }
 
     public MjestoRodjenja() {

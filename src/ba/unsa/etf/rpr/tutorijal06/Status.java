@@ -6,7 +6,7 @@ public class Status {
     private SimpleStringProperty status = new SimpleStringProperty("");
 
     public Status(String status) {
-        this.status = new SimpleStringProperty (status);
+        this.status = new SimpleStringProperty(status);
     }
 
     public Status() {
