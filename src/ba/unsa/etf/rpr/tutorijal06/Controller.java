@@ -517,7 +517,7 @@ public class Controller {
             }
             if (datum1.getMonth().getValue() != Integer.parseInt(jmbg.getCharacters().toString().substring(2, 4).replace("0", ""))) {
                 return false;
-            } else if (datum1.getDayOfYear() != Integer.parseInt(jmbg.getCharacters().toString().substring(0, 2).replace("0", ""))) {
+            } else if (datum1.getDayOfMonth() != Integer.parseInt(jmbg.getCharacters().toString().substring(0, 2).replace("0", ""))) {
                 return false;
             } else {
                 return true;
@@ -527,30 +527,30 @@ public class Controller {
 
     public void potvrdi(ActionEvent actionEvent) {
         EmailValidator validator = EmailValidator.getInstance();
-        if (validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !(izborMjestaRodjenja.getPromptText().isEmpty()) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
+        if (validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !(izborMjestaRodjenja.getValue() == null) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
             potvrda.getStyleClass().removeAll("poljeNijeIspravno");
             potvrda.getStyleClass().add("poljeIspravno");
-            System.out.println("Ime: " + ime.getCharacters().toString());
-            System.out.println("Prezime: " + prezime.getCharacters().toString());
-            System.out.println("Broj indeksa: " + indeks.getCharacters().toString());
-            System.out.println("JBMG: " + jmbg.getCharacters().toString());
-            //System.out.println("Datum rođenja: " + datum.getValue());
-            System.out.println("Mjesto rođenja: " + izborMjestaRodjenja.getPromptText());
+            System.out.print("Ime: " + ime.getCharacters().toString() + "\n");
+            System.out.print("Prezime: " + prezime.getCharacters().toString() + "\n");
+            System.out.print("Broj indeksa: " + indeks.getCharacters().toString() + "\n");
+            System.out.print("JMBG: " + jmbg.getCharacters().toString() + "\n");
+            System.out.print("Datum rođenja: " + datum.getValue() + "\n");
+            System.out.print("Mjesto rođenja: " + izborMjestaRodjenja.getValue() + "\n");
             if (!kontaktAdresa.getCharacters().toString().isEmpty()) {
-                System.out.println("Kontakt adresa: " + kontaktAdresa.getCharacters().toString());
+                System.out.print("Kontakt adresa: " + kontaktAdresa.getCharacters().toString() + "\n");
             }
             if (!kontaktTelefon.getCharacters().toString().isEmpty()) {
-                System.out.println("Kontakt telefon: " + kontaktTelefon.getCharacters().toString());
+                System.out.print("Kontakt telefon: " + kontaktTelefon.getCharacters().toString() + "\n");
             }
-            System.out.println("E-mail adresa: " + email.getCharacters().toString());
-            System.out.println("Odsjek: " + izborOdsjeka.getValue());
-            System.out.println("Godina studija: " + izborGodineStudija.getValue());
-            System.out.println("Ciklus studija: " + izborCiklusa.getValue());
-            System.out.println("Status: " + izborStatusa.getValue());
+            System.out.print("E-mail adresa: " + email.getCharacters().toString() + "\n");
+            System.out.print("Odsjek: " + izborOdsjeka.getValue() + "\n");
+            System.out.print("Godina studija: " + izborGodineStudija.getValue() + "\n");
+            System.out.print("Ciklus studija: " + izborCiklusa.getValue() + "\n");
+            System.out.print("Status: " + izborStatusa.getValue() + "\n");
             if (boracka.isSelected()) {
-                System.out.println("Pripada boračkim kategorijama");
+                System.out.print("Pripada boračkim kategorijama" + "\n");
             } else {
-                System.out.println("Ne pripada boračkim kategorijama");
+                System.out.print("Ne pripada boračkim kategorijama" + "\n");
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
