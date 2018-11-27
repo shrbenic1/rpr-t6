@@ -219,4 +219,14 @@ class MainTest {
         assertEquals("Redovan", status.getValue().toString());
         assertEquals("choice-box", status.getStyleClass().toString());
     }
+
+    @Test
+    public void neispravanStatus(FxRobot robot) {
+        status = robot.lookup("#izborStatusa").queryAs(ChoiceBox.class);
+        robot.clickOn(status);
+        ime = robot.lookup("#ime").queryAs(TextField.class);
+        robot.clickOn(ime);
+        assertEquals("choice-box", status.getStyleClass().toString());
+        assertEquals(",", status);
+    }
 }
