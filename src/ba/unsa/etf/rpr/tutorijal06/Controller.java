@@ -382,7 +382,7 @@ public class Controller {
                     graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
                         @Override
                         public String getText() {
-                            return "Ispravno unesite vašu e-mail adresu!";
+                            return "Unesite izbor odsjeka!";
                         }
 
                         @Override
@@ -397,6 +397,33 @@ public class Controller {
                     });
                 } else {
                     graphicValidationDecoration.removeDecorations(izborOdsjeka);
+                }
+            }
+        });
+
+        izborGodineStudija.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !(izborGodineStudija.getValue() != null)) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Unesite godinu studija!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return izborGodineStudija;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(izborGodineStudija);
                 }
             }
         });
