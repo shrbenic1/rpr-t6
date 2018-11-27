@@ -22,6 +22,7 @@ class MainTest {
     private TextField indeks;
     private TextField jmbg;
     private TextField kontaktTelefon;
+    private TextField email;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -134,5 +135,22 @@ class MainTest {
         robot.clickOn(kontaktTelefon);
         robot.write("df");
         assertEquals("text-input text-field poljeNijeIspravno", kontaktTelefon.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanEmail(FxRobot robot) {
+        email = robot.lookup("#email").queryAs(TextField.class);
+        robot.clickOn(email);
+        robot.write("shrbenic1@etf.unsa.ba");
+        assertEquals("shrbenic1@etf.unsa.ba", email.getText());
+        assertEquals("text-input text-field poljeIspravno", email.getStyleClass().toString());
+    }
+
+    @Test
+    public void neispravanEmail(FxRobot robot) {
+        email = robot.lookup("#email").queryAs(TextField.class);
+        robot.clickOn(email);
+        robot.write("shrbenic1etf.unsa.ba");
+        assertEquals("text-input text-field poljeNijeIspravno", email.getStyleClass().toString());
     }
 }
