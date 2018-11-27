@@ -12,6 +12,7 @@ import org.controlsfx.validation.decoration.GraphicValidationDecoration;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Optional;
 
 public class Controller {
     private MjestoRodjenjaModel mjestoRodjenjaModel;
@@ -528,7 +529,7 @@ public class Controller {
 
     public void potvrdi(ActionEvent actionEvent) {
         EmailValidator validator = EmailValidator.getInstance();
-        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !(izborMjestaRodjenja.getValue() == null) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
+        if(validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !(izborMjestaRodjenja.getPromptText().isEmpty()) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
             potvrda.getStyleClass().removeAll("poljeNijeIspravno");
             potvrda.getStyleClass().add("poljeIspravno");
             System.out.println("Ime: " + ime.getCharacters().toString());
@@ -554,7 +555,12 @@ public class Controller {
                 System.out.println("Ne pripada boračkim kategorijama");
             }
         } else {
-
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Neispravna forma");
+            alert.setResizable(false);
+            alert.setContentText("Unesite potrebne podatke!");
+            Optional<ButtonType> result = alert.showAndWait();
+            //ButtonType button = result.orElse(ButtonType.OK);
         }
     }
 
