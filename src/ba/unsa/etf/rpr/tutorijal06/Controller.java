@@ -374,6 +374,33 @@ public class Controller {
             }
         });
 
+        izborMjestaRodjenja.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && (izborMjestaRodjenja.getValue() != null) && izborMjestaRodjenja.getEditor().getText().isEmpty()) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Odaberite izbor odsjeka!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return izborMjestaRodjenja;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(izborMjestaRodjenja);
+                }
+            }
+        });
+
         izborOdsjeka.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
@@ -527,7 +554,7 @@ public class Controller {
 
     public void potvrdi(ActionEvent actionEvent) {
         EmailValidator validator = EmailValidator.getInstance();
-        if (validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && !(izborMjestaRodjenja.getValue() == null) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
+        if (validnoImePrezime(ime.getCharacters().toString()) && validnoImePrezime(prezime.getCharacters().toString()) && validanIndeks(indeks.getCharacters().toString()) && validanJmbg(jmbg.getCharacters().toString()) && validnostDatuma(datum.getValue()) && validanKontaktTelefon(kontaktTelefon.getCharacters().toString()) && validator.isValid(email.getText()) && (izborMjestaRodjenja.getValue() != null) && !(izborStatusa.getValue() == null) && !(izborCiklusa.getValue() == null) && !(izborGodineStudija.getValue() == null) && !(izborOdsjeka.getValue() == null)) {
             potvrda.getStyleClass().removeAll("poljeNijeIspravno");
             potvrda.getStyleClass().add("poljeIspravno");
             System.out.print("Ime: " + ime.getCharacters().toString() + "\n");
