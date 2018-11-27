@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ class MainTest {
     private TextField prezime;
     private TextField indeks;
     private TextField jmbg;
+    private TextField kontaktTelefon;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -107,5 +109,30 @@ class MainTest {
         robot.write("0601998172652");
         assertEquals("0601998172652", jmbg.getText());
         assertEquals("text-input text-field poljeIspravno", jmbg.getStyleClass().toString());
+    }
+
+    @Test
+    public void neispravanUnosJmbga(FxRobot robot) {
+        jmbg = robot.lookup("#jmbg").queryAs(TextField.class);
+        robot.clickOn(jmbg);
+        robot.write("0601998172654");
+        assertEquals("text-input text-field poljeNijeIspravno", jmbg.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanKontaktTelefon(FxRobot robot) {
+        kontaktTelefon = robot.lookup("#kontaktTelefon").queryAs(TextField.class);
+        robot.clickOn(kontaktTelefon);
+        robot.write("060242343");
+        assertEquals("060242343", kontaktTelefon.getText());
+        assertEquals("text-input text-field poljeIspravno", kontaktTelefon.getStyleClass().toString());
+    }
+
+    @Test
+    public void neispravanKontaktTelefon(FxRobot robot) {
+        kontaktTelefon = robot.lookup("#kontaktTelefon").queryAs(TextField.class);
+        robot.clickOn(kontaktTelefon);
+        robot.write("df");
+        assertEquals("text-input text-field poljeNijeIspravno", kontaktTelefon.getStyleClass().toString());
     }
 }

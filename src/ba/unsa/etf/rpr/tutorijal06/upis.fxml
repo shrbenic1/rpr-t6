@@ -75,7 +75,7 @@
                 <Label text="Ime:" GridPane.rowIndex="1"/>
                 <Label text="Prezime:" GridPane.rowIndex="2"/>
                 <Label text="Broj indeksa:" GridPane.rowIndex="3"/>
-                <TextField fx:id="ime" id="ime" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <TextField fx:id="ime" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                 <TextField fx:id="prezime" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1"
                            GridPane.rowIndex="2"/>
                 <TextField fx:id="indeks" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
