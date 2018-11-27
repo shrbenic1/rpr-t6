@@ -18,6 +18,7 @@ import org.testfx.framework.junit5.Start;
 
 import java.awt.*;
 import java.security.Key;
+import java.util.Date;
 
 @ExtendWith(ApplicationExtension.class)
 class MainTest {
@@ -32,6 +33,7 @@ class MainTest {
     private ChoiceBox godina;
     private ChoiceBox ciklus;
     private ChoiceBox status;
+    private DatePicker datum;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -227,5 +229,41 @@ class MainTest {
         ime = robot.lookup("#ime").queryAs(TextField.class);
         robot.clickOn(ime);
         assertEquals("choice-box", status.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanDatum(FxRobot robot) {
+        jmbg = robot.lookup("#jmbg").queryAs(TextField.class);
+        robot.clickOn(jmbg);
+        robot.write("0601998172652");
+        datum = robot.lookup("#datum").queryAs(DatePicker.class);
+        robot.clickOn(datum);
+        robot.clickOn(1100,353);
+        for(int i = 0; i < 20; i++) {
+            robot.clickOn(1100, 380);
+        }
+        for(int i = 0; i < 10; i++) {
+            robot.clickOn(940, 380);
+        }
+        robot.clickOn(1000, 460);
+        assertEquals("1998-01-06", datum.getValue().toString());
+    }
+
+    @Test
+    public void neispravanDatum(FxRobot robot) {
+        jmbg = robot.lookup("#jmbg").queryAs(TextField.class);
+        robot.clickOn(jmbg);
+        robot.write("0601998172652");
+        datum = robot.lookup("#datum").queryAs(DatePicker.class);
+        robot.clickOn(datum);
+        robot.clickOn(1100,353);
+        for(int i = 0; i < 10; i++) {
+            robot.clickOn(1100, 380);
+        }
+        for(int i = 0; i < 10; i++) {
+            robot.clickOn(940, 380);
+        }
+        robot.clickOn(1000, 500);
+        assertEquals("2008-01-22", datum.getValue().toString());
     }
 }
