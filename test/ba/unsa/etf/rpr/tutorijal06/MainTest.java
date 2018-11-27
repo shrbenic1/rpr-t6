@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,6 +25,7 @@ class MainTest {
     private TextField jmbg;
     private TextField kontaktTelefon;
     private TextField email;
+    private ChoiceBox odsjek;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -152,5 +155,24 @@ class MainTest {
         robot.clickOn(email);
         robot.write("shrbenic1etf.unsa.ba");
         assertEquals("text-input text-field poljeNijeIspravno", email.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanOdsjek(FxRobot robot) {
+        odsjek = robot.lookup("#izborOdsjeka").queryAs(ChoiceBox.class);
+        robot.clickOn(odsjek);
+        robot.type(KeyCode.ENTER);
+        assertEquals("AE", odsjek.getValue().toString());
+        assertEquals("choice-box", odsjek.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanOdsjek1(FxRobot robot) {
+        odsjek = robot.lookup("#izborOdsjeka").queryAs(ChoiceBox.class);
+        robot.clickOn(odsjek);
+        robot.type(KeyCode.DOWN);
+        robot.type(KeyCode.ENTER);
+        assertEquals("RI", odsjek.getValue().toString());
+        assertEquals("choice-box", odsjek.getStyleClass().toString());
     }
 }
