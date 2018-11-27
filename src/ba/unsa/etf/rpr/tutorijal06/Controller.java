@@ -238,6 +238,32 @@ public class Controller {
             }
         });
 
+        jmbg.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
+                GraphicValidationDecoration graphicValidationDecoration = new GraphicValidationDecoration();
+                if (!n && !validnoImePrezime(jmbg.getCharacters().toString())) {
+                    graphicValidationDecoration.applyValidationDecoration(new ValidationMessage() {
+                        @Override
+                        public String getText() {
+                            return "Provjerite jeste li ispravno unijeli vaš JMBG!";
+                        }
+
+                        @Override
+                        public Severity getSeverity() {
+                            return Severity.ERROR;
+                        }
+
+                        @Override
+                        public Control getTarget() {
+                            return jmbg;
+                        }
+                    });
+                } else {
+                    graphicValidationDecoration.removeDecorations(jmbg);
+                }
+            }
+        });
 
         kontaktTelefon.textProperty().addListener(new ChangeListener<String>() {
             @Override
