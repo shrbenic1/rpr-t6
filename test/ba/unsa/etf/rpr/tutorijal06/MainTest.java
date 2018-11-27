@@ -18,6 +18,7 @@ class MainTest {
 
     private TextField ime;
     private TextField prezime;
+    private TextField indeks;
 
     @Start
     public void start(Stage stage) throws Exception {
@@ -45,6 +46,7 @@ class MainTest {
         robot.clickOn(ime);
         robot.write("Sven");
         assertEquals("Sven", ime.getText());
+        assertEquals("text-input text-field poljeIspravno poljeIspravno poljeIspravno poljeIspravno", ime.getStyleClass().toString());
     }
 
     @Test
@@ -61,6 +63,7 @@ class MainTest {
         robot.clickOn(prezime);
         robot.write("Hrbenić");
         assertEquals("Hrbenić", prezime.getText());
+        assertEquals("text-input text-field poljeIspravno poljeIspravno poljeIspravno poljeIspravno poljeIspravno poljeIspravno poljeIspravno", prezime.getStyleClass().toString());
     }
 
     @Test
@@ -77,5 +80,22 @@ class MainTest {
         robot.clickOn(ime);
         robot.write("AaAaAaAaAaAaAaAaAaAaA");
         assertEquals("text-input text-field poljeNijeIspravno", ime.getStyleClass().toString());
+    }
+
+    @Test
+    public void ispravanUnosIndeksa(FxRobot robot) {
+        indeks = robot.lookup("#indeks").queryAs(TextField.class);
+        robot.clickOn(indeks);
+        robot.write("17901");
+        assertEquals("17901", indeks.getText());
+        assertEquals("text-input text-field poljeIspravno", indeks.getStyleClass().toString());;
+    }
+
+    @Test
+    public void neispravanUnosIndeksa(FxRobot robot) {
+        indeks = robot.lookup("#indeks").queryAs(TextField.class);
+        robot.clickOn(indeks);
+        robot.write("1790");
+        assertEquals("text-input text-field poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno poljeNijeIspravno", indeks.getStyleClass().toString());;
     }
 }
